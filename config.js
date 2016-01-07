@@ -20,6 +20,7 @@ System.config({
     "clean-css": "npm:clean-css@3.4.9",
     "core-js": "npm:core-js@0.9.18",
     "driftyco/ionic-bower": "github:driftyco/ionic-bower@1.2.4",
+    "ramda": "npm:ramda@0.19.1",
     "github:angular-ui/ui-router@0.2.13": {
       "angular": "github:angular/bower-angular@1.4.8"
     },
@@ -142,6 +143,9 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
     "npm:punycode@1.3.2": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:ramda@0.19.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:readable-stream@1.1.13": {

@@ -1,5 +1,5 @@
 {
-  "name": "remote",
+  "name": "mooffinApp",
   "app_id": "",
   "gulpStartupTasks": [
     "sass",

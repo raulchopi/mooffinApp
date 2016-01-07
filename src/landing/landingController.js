@@ -1,6 +1,6 @@
 
 function landingController($scope) {
-  $scope.title = 'This is the title!';
+  $scope.title = 'Mooffin';
 };
 
 landingController.$inject = ['$scope'];
