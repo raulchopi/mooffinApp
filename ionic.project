@@ -7,6 +7,12 @@
     "html",
     "watch"
   ],
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://www.mooffin.es/api/v1"
+    }
+  ],
   "watchPatterns": [
     "www/**/*"
   ]

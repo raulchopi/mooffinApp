@@ -1,26 +1,23 @@
 System.config({
-  "transpiler": "babel",
-  "babelOptions": {
+  defaultJSExtensions: true,
+  transpiler: "babel",
+  babelOptions: {
     "optional": [
       "runtime"
     ]
   },
-  "paths": {
-    "*": "*.js",
-    "github:*": "jspm_packages/github/*.js",
-    "npm:*": "jspm_packages/npm/*.js"
+  paths: {
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*"
   },
-  "defaultJSExtensions": true
-});
 
-System.config({
-  "map": {
+  map: {
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.24",
     "clean-css": "npm:clean-css@3.4.9",
     "core-js": "npm:core-js@0.9.18",
     "driftyco/ionic-bower": "github:driftyco/ionic-bower@1.2.4",
-    "q": "npm:q@2.0.3",
+    "q": "npm:q@1.4.1",
     "ramda": "npm:ramda@0.19.1",
     "github:angular-ui/ui-router@0.2.13": {
       "angular": "github:angular/bower-angular@1.4.8"
@@ -43,9 +40,6 @@ System.config({
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.6.0"
-    },
-    "github:jspm/nodelibs-domain@0.1.0": {
-      "domain-browser": "npm:domain-browser@1.1.7"
     },
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
@@ -83,10 +77,6 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "module": "github:jspm/nodelibs-module@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:asap@2.0.3": {
-      "domain": "github:jspm/nodelibs-domain@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.3.0": {
@@ -132,9 +122,6 @@ System.config({
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
-    "npm:domain-browser@1.1.7": {
-      "events": "github:jspm/nodelibs-events@0.1.1"
-    },
     "npm:graceful-readlink@1.0.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
@@ -156,11 +143,8 @@ System.config({
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:q@2.0.3": {
-      "asap": "npm:asap@2.0.3",
-      "pop-iterate": "npm:pop-iterate@1.0.1",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "weak-map": "npm:weak-map@1.0.5"
+    "npm:q@1.4.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:ramda@0.19.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -201,4 +185,3 @@ System.config({
     }
   }
 });
-

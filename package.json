@@ -26,10 +26,9 @@
   ],
   "cordovaPlatforms": [],
   "jspm": {
-    "directories": {},
     "dependencies": {
       "driftyco/ionic-bower": "github:driftyco/ionic-bower@^1.2.4",
-      "q": "npm:q@^2.0.3",
+      "q": "npm:q@^1.4.1",
       "ramda": "npm:ramda@^0.19.1"
     },
     "devDependencies": {

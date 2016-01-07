@@ -5,6 +5,10 @@
     <ion-nav-title>Buscador</ion-nav-title>
   </ion-nav-bar>
   <ion-content class="bouquetsList">
-    contenido del buscador
+    <ion-list>
+      <ion-item ng-repeat="i in ingredients">
+        {{i.nombre}}
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

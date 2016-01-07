@@ -5,7 +5,7 @@ function searcherController($scope, APIService) {
 
   APIService.getIngredients({})
   .then(function(response) {
-    $scope.ingredients = response;
+    $scope.ingredients.push(response.ingredientes[0]);
   })
   .catch(function(error) {
     console.error('an error has ocurred');
