@@ -29,6 +29,7 @@
     "directories": {},
     "dependencies": {
       "driftyco/ionic-bower": "github:driftyco/ionic-bower@^1.2.4",
+      "q": "npm:q@^2.0.3",
       "ramda": "npm:ramda@^0.19.1"
     },
     "devDependencies": {

@@ -1,15 +1,16 @@
 import R from 'ramda'
+import Q from 'q';
 
-function APIService($localStorage, ajaxService, $q, $http) {
+function APIService($localStorage, ajaxService, $q) {
 
   let basePath = "http://www.moofin.com/api/v1"
 
   // $http.defaults.headers.common["Authorization"] = $localStorage.token;
-  $http.defaults.headers.post["Content-Type"] = "application/json";
+  // $http.defaults.headers.post["Content-Type"] = "application/json";
 
   let handledCall = R.curry(function handledCall(method, path, cache, form) {
     // $http.defaults.headers.common["Authorization"] = $localStorage.token;
-    let defer = $q.defer();
+    let defer = Q.defer();
 
     ajaxService.cachedCall(method, path, cache, angular.copy(form))
     .then(defer.resolve)
@@ -43,7 +44,7 @@ function APIService($localStorage, ajaxService, $q, $http) {
   return {
     path: basePath,
 
-    getIngredients: handledCall('post', `${basePath}/ingredients`, undefined),
+    getIngredients: handledCall('post', `${basePath}/ingredients`, undefined)
     // login: loginHandledCall,
 
     // getUsers: handledCall('post', `${basePath}/user/{page}/{items}`, undefined),
@@ -89,6 +90,6 @@ function APIService($localStorage, ajaxService, $q, $http) {
   }
 }
 
-APIService.$inject = ['ajaxService', '$q', '$http'];
+APIService.$inject = ['ajaxService', '$q'];
 
 export default APIService

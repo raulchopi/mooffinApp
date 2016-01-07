@@ -1,0 +1,8 @@
+[submodule "zadia-ng"]
+	path = zadia-ng
+	url = git@bitbucket.org:zadiasoftware/zadia-ng.git
+	branch = master
+[submodule "zadia-sass"]
+	path = zadia-sass
+	url = git@bitbucket.org:zadiasoftware/zadia-sass.git
+	branch = master
