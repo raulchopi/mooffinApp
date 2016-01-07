@@ -46,7 +46,8 @@ function APIService(ajaxService, $http) {
   return {
     path: basePath,
 
-    getIngredients: handledCall('get', `${basePath}/ingredients`, undefined)
+    getIngredients: handledCall('get', `${basePath}/ingredients`, undefined),
+    getProposals:  handledCall('post', `${basePath}/proposals`, undefined),
     // login: loginHandledCall,
 
     // getUsers: handledCall('post', `${basePath}/user/{page}/{items}`, undefined),

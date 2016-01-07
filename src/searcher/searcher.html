@@ -4,11 +4,10 @@
     </ion-nav-back-button>
     <ion-nav-title>Buscador</ion-nav-title>
   </ion-nav-bar>
-  <ion-content class="bouquetsList">
-    <ion-list>
-      <ion-item ng-repeat="i in ingredients">
-        {{i.nombre}}
-      </ion-item>
-    </ion-list>
+  <ion-content class="contentWrapper">
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="search" placeholder="Buscar">
+    </label>
   </ion-content>
 </ion-view>

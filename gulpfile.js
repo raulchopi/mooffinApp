@@ -3,6 +3,7 @@ var gutil = require('gulp-util');
 var bower = require('bower');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
+var flatten = require('gulp-flatten');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
@@ -12,10 +13,11 @@ var plumber = require('gulp-plumber');
 var paths = {
   sass: ['./src/**/*.{scss,sass}'],
   js: ['./src/**/*.js'],
-  html: ['./src/**/*.html']
+  html: ['./src/**/*.html'],
+  fonts: ['./jspm_packages/**/*.{eot,svg,ttf,woff}']
 };
 
-gulp.task('default', ['sass','js','html']);
+gulp.task('default', ['sass','js','html', 'fonts']);
 
 gulp.task('sass', function(done) {
   gulp.src('./src/app.scss')
@@ -58,6 +60,12 @@ gulp.task('js', function(done) {
 gulp.task('html', function() {
   gulp.src(paths.html)
   .pipe(gulp.dest('./www/'));
+});
+
+gulp.task('fonts', function() {
+  gulp.src(paths.fonts)
+  .pipe(flatten())
+  .pipe(gulp.dest('./www/fonts'));
 });
 
 gulp.task('watch', function() {
