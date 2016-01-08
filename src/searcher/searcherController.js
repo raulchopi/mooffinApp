@@ -3,24 +3,31 @@ function searcherController($scope, APIService) {
 
   $scope.ingredients = [];
   $scope.ingSelected = [];
-  $scope.propostals = [];
+  $scope.proposals = [];
 
   APIService.getIngredients({})
   .then(function(response) {
-    $scope.ingredients.push(response.ingredientes[0]);
+    $scope.ingredients = response.ingredientes;
   })
   .catch(function(error) {
     console.error('an error has ocurred');
     console.error(error || "Undefined error");
   });
 
+  $scope.addIng = function addIng(ing) {
+    $scope.ingSelected.push(ing.id);
+    $scope.nameFilter = '';
+    this.getProposals();
+  }
+
 
   $scope.getProposals = function getProposals() {
     APIService.getProposals({
-      ids: $scope.ingSelected,
+      params: {'ids[]': $scope.ingSelected}
     })
     .then(function(response) {
-      $scope.proposals = response;
+      $scope.proposals = response.recetas;
+      console.log($scope.proposals);
     })
     .catch(function(error) {
       console.error('an error has ocurred');

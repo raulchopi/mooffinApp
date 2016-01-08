@@ -4,6 +4,7 @@ import Q from 'q';
 function APIService(ajaxService, $http) {
 
   // let basePath = "http://www.mooffin.es/api/v1"
+  // let basePath = "http://192.168.20.56:8100/api"
   let basePath = "http://localhost:8100/api"
 
 
@@ -47,7 +48,7 @@ function APIService(ajaxService, $http) {
     path: basePath,
 
     getIngredients: handledCall('get', `${basePath}/ingredients`, undefined),
-    getProposals:  handledCall('post', `${basePath}/proposals`, undefined),
+    getProposals:  handledCall('get', `${basePath}/proposals`, undefined),
     // login: loginHandledCall,
 
     // getUsers: handledCall('post', `${basePath}/user/{page}/{items}`, undefined),
