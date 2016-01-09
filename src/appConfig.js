@@ -1,8 +1,9 @@
 import landingController from './landing/landingController';
 import searcherController from './searcher/searcherController';
+import showRecipeController from './recipe/showRecipeController';
 
 function appConfig($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/searcher');
 
   $stateProvider
   .state('landing', {
@@ -15,6 +16,12 @@ function appConfig($stateProvider, $urlRouterProvider) {
     url: '/searcher',
     templateUrl: './searcher/searcher.html',
     controller: searcherController
+  })
+
+  .state('recipeShow', {
+    url: '/recipe/:idRecipe',
+    templateUrl: './recipe/show.html',
+    controller: showRecipeController
   });
 };
 
