@@ -1,0 +1,31 @@
+<ion-nav-view>
+  <div class="bar bar-header">
+    <button class="button button-icon icon ion-chevron-left" ng-click="myGoBack()"></button>
+    <div class="h1 title">{{recipe.titulo}}</div>
+    <!-- <button class="button button-clear button-positive">Edit</button> -->
+  </div>
+  <!-- <ion-nav-bar class="bar-stable">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+    <ion-nav-title>{{recipe.titulo}}</ion-nav-title>
+  </ion-nav-bar> -->
+  <ion-content class="contentWrapper showRecipeWrapper">
+    <div class="header-image">
+      <img src="http://www.mooffin.es{{recipe.image}}"
+        ng-if="recipe.photo_file_name !== null">
+    </div>
+    <div class="recipeTextWrapper">
+      <div class="ingredients">
+        <ul>
+          <li ng-repeat="ing in recipe.ingredientes">{{ing.texto}}</li>
+        </ul>
+      </div>
+
+      <div class="steps">
+        <ul>
+          <li class="step" ng-repeat="paso in recipe.pasos">{{paso.desc}}</li>
+        </ul>
+      </div>
+    </div>
+  </ion-content>
+</ion-nav-view>

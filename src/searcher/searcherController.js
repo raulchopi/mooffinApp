@@ -1,9 +1,10 @@
 
-function searcherController($scope, APIService) {
+function searcherController($scope, $state, $ionicHistory, APIService) {
 
   $scope.ingredients = [];
   $scope.ingSelected = [];
   $scope.proposals = [];
+  $scope.nameFilter = "";
 
   APIService.getIngredients({})
   .then(function(response) {
@@ -15,8 +16,8 @@ function searcherController($scope, APIService) {
   });
 
   $scope.addIng = function addIng(ing) {
+    $scope.nameFilter = "";
     $scope.ingSelected.push(ing.id);
-    $scope.nameFilter = '';
     this.getProposals();
   }
 
@@ -27,7 +28,6 @@ function searcherController($scope, APIService) {
     })
     .then(function(response) {
       $scope.proposals = response.recetas;
-      console.log($scope.proposals);
     })
     .catch(function(error) {
       console.error('an error has ocurred');
@@ -35,8 +35,16 @@ function searcherController($scope, APIService) {
     });
   }
 
+  $scope.goToRecipe = function goToRecipe(recipe) {
+    $state.go("recipeShow", {idRecipe: recipe.id});
+  }
+
+  $scope.myGoBack = function myGoBack() {
+    $ionicHistory.goBack();
+  };
+
 };
 
-searcherController.$inject = ['$scope', 'APIService'];
+searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService'];
 
 export default searcherController;
