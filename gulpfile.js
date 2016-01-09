@@ -20,7 +20,7 @@ var paths = {
 gulp.task('default', ['sass','js','html', 'fonts']);
 
 gulp.task('sass', function(done) {
-  gulp.src('./src/app.scss')
+  gulp.src('./src/app.sass')
     .pipe(sass({
       errLogToConsole: true
     }))
