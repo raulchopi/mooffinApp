@@ -5,15 +5,24 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
   $scope.ingSelected = [];
   $scope.proposals = [];
   $scope.nameFilter = "";
+  $scope.loading = false;
 
-  APIService.getIngredients({})
-  .then(function(response) {
-    $scope.ingredients = response.ingredientes;
-  })
-  .catch(function(error) {
-    console.error('an error has ocurred');
-    console.error(error || "Undefined error");
-  });
+  getIngredients();
+
+  function getIngredients() {
+    $scope.loading = true;
+    APIService.getIngredients({})
+    .then(function(response) {
+      $scope.loading = false;
+      $scope.ingredients = response.ingredientes;
+    })
+    .catch(function(error) {
+      $scope.loading = false;
+      console.error('an error has ocurred');
+      console.error(error || "Undefined error");
+    });
+  }
+
 
   $scope.addIng = function addIng(ing) {
     $scope.nameFilter = "";

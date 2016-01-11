@@ -16,6 +16,10 @@
       </li>
     </ul>
 
+    <div class="loading" style="text-align: center" ng-if="loading">
+      <i class="fa fa-2x fa-spinner fa-spin">Cargando ingredientes...</i>
+    </div>
+
     <!-- proposal list -->
     <div class="list proposalsList">
       <a class="item item-thumbnail-left" ng-click="goToRecipe(p)" ng-repeat="p in proposals">
