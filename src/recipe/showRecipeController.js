@@ -2,16 +2,21 @@
 function showRecipeController($scope, $stateParams, $ionicHistory, APIService) {
 
   $scope.recipe = {};
+  $scope.loading = false;
 
   getRecipe();
 
   function getRecipe() {
+    $scope.loading = true;
     APIService.getRecipe({id: $stateParams.idRecipe})
     .then(function(response) {
       $scope.recipe = response;
+      $scope.loading = false;
       $scope.$apply();
     })
     .catch(function(error) {
+      $scope.loading = false;
+      $scope.$apply();
       console.log(JSON.stringify(error));
     });
   }

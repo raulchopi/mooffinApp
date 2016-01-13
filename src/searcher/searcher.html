@@ -1,8 +1,4 @@
-<ion-nav-view>
-  <div class="bar bar-header">
-    <!-- <button class="button button-icon icon ion-chevron-left" ng-click="myGoBack()"></button> -->
-    <div class="h1 title">Mooffin</div>
-  </div>
+<ion-view view-title="Mooffin">
   <ion-content class="contentWrapper">
     <label class="item item-input">
       <i class="fa fa-search placeholder-icon"></i>
@@ -17,7 +13,7 @@
     </ul>
 
     <div class="loading" style="text-align: center" ng-if="loading">
-      Cargando ingredientes...
+      <span class="text">Cargando ingredientes...</span>
       <i class="fa fa-2x fa-spinner fa-spin"></i>
     </div>
 
@@ -31,4 +27,4 @@
       </a>
     </div>
   </ion-content>
-</ion-nav-view>
+</ion-view>
