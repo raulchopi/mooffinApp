@@ -3,6 +3,7 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
 
   $scope.ingredients = [];
   $scope.ingSelected = [];
+  $scope.idsIngSelected = [];
   $scope.proposals = [];
   $scope.nameFilter = {value: ''};
   $scope.loading = false;
@@ -25,17 +26,17 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
     });
   }
 
-
   $scope.addIng = function addIng(ing) {
     $scope.nameFilter.value = '';
-    $scope.ingSelected.push(ing.id);
+    $scope.idsIngSelected.push(ing.id);
+    $scope.ingSelected.push(ing);
     $scope.getProposals();
   }
 
 
   $scope.getProposals = function getProposals() {
     APIService.getProposals({
-      params: {'ids[]': $scope.ingSelected}
+      params: {'ids[]': $scope.idsIngSelected}
     })
     .then(function(response) {
       $scope.proposals = response.recetas;

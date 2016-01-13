@@ -3,7 +3,7 @@ import searcherController from './searcher/searcherController';
 import showRecipeController from './recipe/showRecipeController';
 
 function appConfig($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/searcher');
+  $urlRouterProvider.otherwise('/searcher/search');
 
   $stateProvider
   .state('landing', {
@@ -14,8 +14,26 @@ function appConfig($stateProvider, $urlRouterProvider) {
 
   .state('searcher', {
     url: '/searcher',
-    templateUrl: './searcher/searcher.html',
+    templateUrl: './searcher/search.html',
     controller: searcherController
+  })
+
+  .state('searcher.search', {
+    url: '/search',
+    views: {
+      'search-tab':{
+        templateUrl: './searcher/searcher.html'
+      }
+    }  
+  })
+
+  .state('searcher.parameters', {
+    url: '/parameters',
+    views: {
+      'parameters-tab':{
+        templateUrl: './searcher/parameters.html'
+      }
+    }
   })
 
   .state('recipeShow', {

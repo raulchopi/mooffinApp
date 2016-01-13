@@ -1,8 +1,4 @@
-
-.contentWrapper
-  top: 45px !important
-
-.bar-header
+.bar-header, .tabs
   background-color: $blueMooffin !important
 
 .bar
@@ -24,3 +20,13 @@
     float: left
     width: 100%
     font-size: 25px
+
+
+.tabs
+  a
+    position: relative
+    .tab-title
+      font-size: 14px
+      position: absolute
+      top: 15px
+      @extend .h-align
