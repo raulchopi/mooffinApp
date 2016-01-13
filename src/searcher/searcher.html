@@ -5,19 +5,20 @@
   </div>
   <ion-content class="contentWrapper">
     <label class="item item-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input type="search" placeholder="Buscar" ng-model="nameFilter" ng-minlength="2">
+      <i class="fa fa-search placeholder-icon"></i>
+      <input type="search" placeholder="Buscar" ng-model="nameFilter.value" ng-minlength="2">
     </label>
     <!-- ingredient list -->
-    <ul class="list ingList" ng-if="nameFilter">
-      <li class="item" ng-repeat="i in ingredients | filter: {nombre: nameFilter} | limitTo: 15 | orderBy: 'nombre'"
+    <ul class="list ingList" ng-if="nameFilter.value != ''">
+      <li class="item" ng-repeat="i in ingredients | filter: {nombre: nameFilter.value} | limitTo: 15 | orderBy: 'nombre'"
         ng-click="addIng(i)">
         <span>{{i.nombre}}</span>
       </li>
     </ul>
 
     <div class="loading" style="text-align: center" ng-if="loading">
-      <i class="fa fa-2x fa-spinner fa-spin">Cargando ingredientes...</i>
+      Cargando ingredientes...
+      <i class="fa fa-2x fa-spinner fa-spin"></i>
     </div>
 
     <!-- proposal list -->

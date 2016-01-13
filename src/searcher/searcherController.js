@@ -4,7 +4,7 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
   $scope.ingredients = [];
   $scope.ingSelected = [];
   $scope.proposals = [];
-  $scope.nameFilter = "";
+  $scope.nameFilter = {value: ''};
   $scope.loading = false;
 
   getIngredients();
@@ -15,9 +15,11 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
     .then(function(response) {
       $scope.loading = false;
       $scope.ingredients = response.ingredientes;
+      $scope.$apply();
     })
     .catch(function(error) {
       $scope.loading = false;
+      $scope.$apply();
       console.error('an error has ocurred');
       console.error(error || "Undefined error");
     });
@@ -25,9 +27,9 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
 
 
   $scope.addIng = function addIng(ing) {
-    $scope.nameFilter = "";
+    $scope.nameFilter.value = '';
     $scope.ingSelected.push(ing.id);
-    this.getProposals();
+    $scope.getProposals();
   }
 
 
@@ -37,6 +39,7 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
     })
     .then(function(response) {
       $scope.proposals = response.recetas;
+      $scope.$apply();
     })
     .catch(function(error) {
       console.error('an error has ocurred');

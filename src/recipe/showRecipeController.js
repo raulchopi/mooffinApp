@@ -6,11 +6,10 @@ function showRecipeController($scope, $stateParams, $ionicHistory, APIService) {
   getRecipe();
 
   function getRecipe() {
-    console.log($stateParams);
     APIService.getRecipe({id: $stateParams.idRecipe})
     .then(function(response) {
-      console.log(response);
       $scope.recipe = response;
+      $scope.$apply();
     })
     .catch(function(error) {
       console.log(JSON.stringify(error));
