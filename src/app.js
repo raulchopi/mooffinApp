@@ -9,7 +9,7 @@ import zadiaNG from '../zadia-ng/zadia-ng';
 
 import appConfig from './appConfig';
 
-angular.module('starter', ['ionic', zadiaNG])
+angular.module('mooffin', ['ionic', zadiaNG])
 .service('APIService', APIService)
 .config(appConfig)
 
