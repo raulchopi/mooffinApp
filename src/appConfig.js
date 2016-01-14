@@ -6,11 +6,11 @@ function appConfig($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/searcher/search');
 
   $stateProvider
-  .state('landing', {
-    url: '/',
-    templateUrl: './landing/landing.html',
-    controller: landingController
-  })
+  // .state('landing', {
+  //   url: '/',
+  //   templateUrl: './landing/landing.html',
+  //   controller: landingController
+  // })
 
   .state('searcher', {
     url: '/searcher',
@@ -24,7 +24,7 @@ function appConfig($stateProvider, $urlRouterProvider) {
       'search-tab':{
         templateUrl: './searcher/searcher.html'
       }
-    }  
+    }
   })
 
   .state('searcher.parameters', {
