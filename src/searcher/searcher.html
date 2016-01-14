@@ -19,7 +19,7 @@
 
     <!-- proposal list -->
     <div class="list proposalsList">
-      <a class="item item-thumbnail-left" ng-click="goToRecipe(p)" ng-repeat="p in proposals">
+      <a class="item item-thumbnail-left" ng-click="goToRecipe(p)" collection-repeat="p in proposals">
         <img src="http://www.mooffin.es{{p.image}}" ng-if="recipe.photo_file_name !== null">
         <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.photo_file_name == null"> -->
         <h2 class="title">{{p.title}}</h2>
