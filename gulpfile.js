@@ -14,7 +14,7 @@ var paths = {
   sass: ['./src/**/*.{scss,sass}'],
   js: ['./src/**/*.js'],
   html: ['./src/**/*.html'],
-  fonts: ['./jspm_packages/**/*.{eot,svg,ttf,woff}']
+  fonts: ['**/*.{eot,svg,ttf,woff,woff2}']
 };
 
 gulp.task('default', ['sass','js','html', 'fonts']);

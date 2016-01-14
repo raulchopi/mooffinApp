@@ -1,3 +1,13 @@
+@font-face
+  font-family: 'brandon_grotesquelight'
+  src: url('fonts/brandon_light-webfont.eot')
+  src: url('fonts/brandon_light-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/brandon_light-webfont.woff') format('woff'), url('fonts/brandon_light-webfont.ttf') format('truetype'), url('fonts/brandon_light-webfont.svg#brandon_grotesquelight') format('svg')
+  font-weight: normal
+  font-style: normal
+
+body, h1, h2, h3, h4
+  font: 1em 'brandon_grotesquelight', '-apple-system', 'Helvetica Neue', 'Roboto', 'Segoe UI', sans-serif !important
+
 .bar-header, .tabs
   background-color: $blueMooffin !important
 
@@ -9,6 +19,9 @@
     &::before
       font-size: 20px !important
       line-height: 35px !important
+
+.platform-android .bar .title
+  text-align: center !important
 
 .loading
   @extend .v-align
