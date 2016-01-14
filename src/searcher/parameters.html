@@ -1,12 +1,18 @@
 <ion-view view-title="Mooffin">
   <ion-content class="contentWrapper">
     <div class="ingSelectedWrapper">
-      <span class="title">Ingredientes seleccionados</span>
+      <div class="titleWrapper">
+        <span class="title">Ingredientes seleccionados</span>
+        <span class="tip" ng-if="ingSelected.length > 0">(Toque en un ingrediente para eliminarlo)</span>
+      </div>
       <ul class="ingList">
         <li class="ing" ng-repeat="s in ingSelected" ng-click="removeIng($index)">
           {{s.nombre}}
         </li>
       </ul>
+      <span class="noIngSelected" ng-if="ingSelected.length === 0">
+        No se ha seleccionado ningún ingrediente
+      </span>
     </div>
 
   </ion-content>
