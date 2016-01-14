@@ -33,6 +33,17 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
     $scope.getProposals();
   }
 
+  $scope.removeIng = function removeIng(index) {
+    $scope.ingSelected.splice(index, 1);
+    $scope.idsIngSelected.splice(index, 1);
+    if($scope.idsIngSelected.length > 0) {
+      $scope.getProposals();
+    }
+    else{
+      $scope.proposals = [];
+    }
+  }
+
 
   $scope.getProposals = function getProposals() {
     APIService.getProposals({

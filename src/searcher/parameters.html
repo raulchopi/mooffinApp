@@ -1,9 +1,13 @@
-<ion-view view-title="Parámetros de búsqueda">
+<ion-view view-title="Mooffin">
   <ion-content class="contentWrapper">
-    <ul>
-      <li ng-repeat="s in ingSelected">
-        {{s.nombre}}
-      </li>
-    </ul>
+    <div class="ingSelectedWrapper">
+      <span class="title">Ingredientes seleccionados</span>
+      <ul class="ingList">
+        <li class="ing" ng-repeat="s in ingSelected" ng-click="removeIng($index)">
+          {{s.nombre}}
+        </li>
+      </ul>
+    </div>
+
   </ion-content>
 </ion-view>
