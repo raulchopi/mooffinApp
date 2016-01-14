@@ -1,5 +1,5 @@
 <ion-view view-title="Mooffin">
-  <ion-content class="contentWrapper">
+  <ion-content class="contentWrapper searcherWrapper">
     <label class="item item-input">
       <i class="fa fa-search placeholder-icon"></i>
       <input type="search" placeholder="Buscar" ng-model="nameFilter.value" ng-minlength="2">
@@ -22,8 +22,8 @@
       <a class="item item-thumbnail-left" ng-click="goToRecipe(p)" ng-repeat="p in proposals">
         <img src="http://www.mooffin.es{{p.image}}" ng-if="recipe.photo_file_name !== null">
         <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.photo_file_name == null"> -->
-        <h2>{{p.title}}</h2>
-        <p>{{p.desc}}</p>
+        <h2 class="title">{{p.title}}</h2>
+        <p class="desc">{{p.desc}}</p>
       </a>
     </div>
   </ion-content>
