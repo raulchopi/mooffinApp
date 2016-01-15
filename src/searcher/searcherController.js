@@ -60,7 +60,7 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
   }
 
   $scope.goToRecipe = function goToRecipe(recipe) {
-    $state.go("recipeShow", {idRecipe: recipe.id});
+    $state.go("searcher.recipeShow", {idRecipe: recipe.id});
   }
 
   $scope.myGoBack = function myGoBack() {

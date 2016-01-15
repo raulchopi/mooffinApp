@@ -14,6 +14,7 @@ function appConfig($stateProvider, $urlRouterProvider) {
 
   .state('searcher', {
     url: '/searcher',
+    abstract: true,
     templateUrl: './searcher/search.html',
     controller: searcherController
   })
@@ -36,10 +37,14 @@ function appConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
-  .state('recipeShow', {
+  .state('searcher.recipeShow', {
     url: '/recipe/:idRecipe',
-    templateUrl: './recipe/show.html',
-    controller: showRecipeController
+    views: {
+      'search-tab':{
+        templateUrl: './recipe/show.html',
+        controller: showRecipeController
+      }
+    }
   });
 };
 
