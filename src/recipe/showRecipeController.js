@@ -3,6 +3,7 @@ function showRecipeController($scope, $stateParams, $ionicHistory, APIService) {
 
   $scope.recipe = {};
   $scope.loading = false;
+  $scope.$emit('changeHideTabs', true);
 
   getRecipe();
 
@@ -23,7 +24,7 @@ function showRecipeController($scope, $stateParams, $ionicHistory, APIService) {
 
   $scope.myGoBack = function myGoBack() {
     $ionicHistory.goBack();
-  };
+  };  
 
 };
 

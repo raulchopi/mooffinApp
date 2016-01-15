@@ -7,6 +7,7 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
   $scope.proposals = [];
   $scope.nameFilter = {value: ''};
   $scope.loading = false;
+  $scope.hideTabs = false;
 
   getIngredients();
 
@@ -66,6 +67,16 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
   $scope.myGoBack = function myGoBack() {
     $ionicHistory.goBack();
   };
+
+  $scope.$on('changeHideTabs', function(event, args) {
+    $scope.hideTabs = args;
+  })
+
+  $scope.$on('$ionicView.enter', function(){
+    if($state.current.name != "searcher.recipeShow"){
+      $scope.hideTabs = false;
+    }
+  })
 
 };
 
