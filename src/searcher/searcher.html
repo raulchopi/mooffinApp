@@ -1,30 +1,11 @@
-<ion-view view-title="Mooffin">
-  <ion-content class="contentWrapper searcherWrapper">
-    <label class="item item-input">
-      <i class="fa fa-search placeholder-icon"></i>
-      <input type="search" placeholder="Buscar" ng-model="nameFilter.value" ng-minlength="2">
-    </label>
-    <!-- ingredient list -->
-    <ul class="list ingList" ng-if="nameFilter.value != ''">
-      <li class="item" ng-repeat="i in ingredients | filter: {nombre: nameFilter.value} | limitTo: 15 | orderBy: 'nombre'"
-        ng-click="addIng(i)">
-        <span>{{i.nombre}}</span>
-      </li>
-    </ul>
+<ion-tabs class="tabs-icon-top tabs-positive">
 
-    <div class="loading" style="text-align: center" ng-if="loading">
-      <span class="text">Cargando ingredientes...</span>
-      <i class="fa fa-2x fa-spinner fa-spin"></i>
-    </div>
+ <ion-tab title="Buscador" ui-sref="searcher.search">
+   <ion-nav-view name="search-tab"></ion-nav-view>
+ </ion-tab>
 
-    <!-- proposal list -->
-    <div class="list proposalsList">
-      <a class="item item-thumbnail-left" ng-click="goToRecipe(p)" collection-repeat="p in proposals">
-        <img src="http://www.mooffin.es{{p.image}}" ng-if="recipe.photo_file_name !== null">
-        <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.photo_file_name == null"> -->
-        <h2 class="title">{{p.title}}</h2>
-        <p class="desc">{{p.desc}}</p>
-      </a>
-    </div>
-  </ion-content>
-</ion-view>
+ <ion-tab title="Parámetros" ui-sref="searcher.parameters">
+   <ion-nav-view name="parameters-tab"></ion-nav-view>
+ </ion-tab>
+
+</ion-tabs>

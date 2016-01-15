@@ -15,7 +15,7 @@ function appConfig($stateProvider, $urlRouterProvider) {
   .state('searcher', {
     url: '/searcher',
     abstract: true,
-    templateUrl: './searcher/search.html',
+    templateUrl: './searcher/searcher.html',
     controller: searcherController
   })
 
@@ -23,7 +23,7 @@ function appConfig($stateProvider, $urlRouterProvider) {
     url: '/search',
     views: {
       'search-tab':{
-        templateUrl: './searcher/searcher.html'
+        templateUrl: './searcher/search.html'
       }
     }
   })
