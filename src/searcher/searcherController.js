@@ -47,14 +47,17 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
 
 
   $scope.getProposals = function getProposals() {
+    $scope.loading = true;
     APIService.getProposals({
       params: {'ids[]': $scope.idsIngSelected}
     })
     .then(function(response) {
       $scope.proposals = response.recetas;
+      $scope.loading = false;
       $scope.$apply();
     })
     .catch(function(error) {
+      $scope.loading = false;
       console.error('an error has ocurred');
       console.error(error || "Undefined error");
     });

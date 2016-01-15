@@ -1,8 +1,10 @@
 <ion-view view-title="Detalle receta">
   <ion-content class="contentWrapper showRecipeWrapper">
     <div class="header-image">
-      <img src="http://www.mooffin.es{{recipe.image}}"
-        ng-if="recipe.photo_file_name !== null">
+      <!-- <img src="http://www.mooffin.es{{recipe.image}}"
+        ng-if="recipe.photo_file_name !== null"> -->
+        <img src="http://www.mooffin.es{{recipe.image}}" ng-if="recipe.image_name !== null">
+        <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.image_name === null"> -->
     </div>
     <div class="recipeTextWrapper">
       <div class="titleWrapper">
@@ -22,7 +24,7 @@
     </div>
 
     <div class="loading" style="text-align: center" ng-if="loading">
-      <span class="text">Cargando ingredientes...</span>
+      <span class="text">Cargando receta...</span>
       <i class="fa fa-2x fa-spinner fa-spin"></i>
     </div>
   </ion-content>
