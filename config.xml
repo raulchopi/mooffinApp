@@ -2,11 +2,11 @@
 <widget id="com.raulcacabelos.mooffin" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Mooffin</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
+        Buscador de recetas sociales por ingredientes
+  </description>
+  <author email="raul.cacabelos@gmail.com" href="http://www.mooffin.es">
+      Raúl Cacabelos
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
