@@ -7,7 +7,8 @@
         <img src="http://www.mooffin.es{{recipe.image}}" ng-if="recipe.image_name !== null">
         <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.image_name === null"> -->
     </div>
-    <div class="recipeTextWrapper">
+    <div class="fillNoPhoto" ng-if="recipe.image_name === null"></div>
+    <div class="recipeTextWrapper">      
       <div class="userAvatarWrapper">
         <img src="http://www.mooffin.es{{recipe.usuario.avatar}}">
       </div>
