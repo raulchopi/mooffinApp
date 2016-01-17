@@ -12,7 +12,11 @@
       </li>
     </ul>
 
-    <div class="loading" style="text-align: center" ng-if="loading">
+    <div class="loading" style="text-align: center" ng-if="loadingIng">
+      <span class="text">Buscando ingredientes...</span>
+      <i class="fa fa-2x fa-spinner fa-spin"></i>
+    </div>
+    <div class="loading" style="text-align: center" ng-if="loadingProp">
       <span class="text">Buscando propuestas...</span>
       <i class="fa fa-2x fa-spinner fa-spin"></i>
     </div>
