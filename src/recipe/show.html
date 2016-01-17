@@ -14,9 +14,11 @@
       <div class="titleWrapper">
         <span class="title">{{recipe.titulo}}</span>
       </div>
-      <div class="descWrapper">
+      <span class="line" ng-if="recipe.desc != ''"></span>
+      <div class="descWrapper" ng-if="recipe.desc != ''">
         <span class="desc">{{recipe.desc}}</span>
       </div>
+      <span class="line" ng-if="recipe.desc != ''"></span>
       <div class="ingredients">
         <ul>
           <li ng-repeat="ing in recipe.ingredientes">{{ing.texto}}</li>

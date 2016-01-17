@@ -1,10 +1,12 @@
-<ion-view view-title="Mooffin">
+<ion-view>
+  <ion-nav-title style="font-size: 1.4em;">Mooffin</ion-nav-title>
   <ion-content class="contentWrapper">
     <div class="ingSelectedWrapper">
       <div class="titleWrapper">
         <span class="title">Ingredientes seleccionados</span>
         <span class="tip" ng-if="ingSelected.length > 0">(Toque en un ingrediente para eliminarlo)</span>
       </div>
+      <span class="line" ng-if="ingSelected.length > 0"></span>
       <ul class="ingList">
         <li class="ing" ng-repeat="s in ingSelected" ng-click="removeIng($index)">
           {{s.nombre}}

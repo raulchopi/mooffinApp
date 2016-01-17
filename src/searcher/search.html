@@ -1,4 +1,5 @@
-<ion-view view-title="Mooffin">
+<ion-view>
+  <ion-nav-title style="font-size: 1.4em;">Mooffin</ion-nav-title>
   <ion-content class="contentWrapper searcherWrapper">
     <label class="item item-input">
       <i class="fa fa-search placeholder-icon"></i>
@@ -22,8 +23,9 @@
     </div>
 
     <!-- proposal list -->
-    <div class="list proposalsList">
-      <a class="item item-thumbnail-left" ng-click="goToRecipe(p)" collection-repeat="p in proposals">
+    <div class="list proposalsList"  ng-if="nameFilter.value === ''">
+      <a class="item item-thumbnail-left proposal" ng-click="goToRecipe(p)" collection-repeat="p in proposals"
+        item-width="100%" item-height="100px">
         <img src="http://www.mooffin.es{{p.image}}" ng-if="p.image_name !== null">
         <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="p.image_name === null">
         <h2 class="title">{{p.title}}</h2>
