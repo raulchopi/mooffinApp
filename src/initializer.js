@@ -27,6 +27,6 @@ function initializer($ionicPlatform) {
   });
 }
 
-initializer.$inject = ['$ionicPlatform', '$cordovaGoogleAnalytics', '$window'];
+initializer.$inject = ['$ionicPlatform'];
 
 export default initializer;

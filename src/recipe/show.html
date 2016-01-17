@@ -1,4 +1,5 @@
-<ion-view view-title="Detalle receta">
+<ion-view>
+  <ion-nav-title>{{recipe.titulo}}</ion-nav-title>
   <ion-content class="contentWrapper showRecipeWrapper">
     <div class="header-image">
       <!-- <img src="http://www.mooffin.es{{recipe.image}}"
@@ -7,8 +8,14 @@
         <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.image_name === null"> -->
     </div>
     <div class="recipeTextWrapper">
+      <div class="userAvatarWrapper">
+        <img src="http://www.mooffin.es{{recipe.usuario.avatar}}">
+      </div>
       <div class="titleWrapper">
         <span class="title">{{recipe.titulo}}</span>
+      </div>
+      <div class="descWrapper">
+        <span class="desc">{{recipe.desc}}</span>
       </div>
       <div class="ingredients">
         <ul>
