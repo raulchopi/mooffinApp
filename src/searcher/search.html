@@ -1,6 +1,6 @@
 <ion-view>
   <ion-nav-title style="font-size: 1.4em;">Mooffin</ion-nav-title>
-  <ion-content class="contentWrapper searcherWrapper">
+  <ion-content class="contentWrapper searcherWrapper" on-swipe-right="goTabBack()" on-swipe-left="goTabForward()">
     <label class="item item-input">
       <i class="fa fa-search placeholder-icon"></i>
       <input type="search" placeholder="Buscar" ng-model="nameFilter.value" ng-minlength="2">

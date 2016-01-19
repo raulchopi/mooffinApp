@@ -1,5 +1,5 @@
 
-function searcherController($scope, $state, $ionicHistory, APIService) {
+function searcherController($scope, $state, $ionicHistory, APIService, $ionicTabsDelegate) {
 
   $scope.ingredients = [];
   $scope.ingSelected = [];
@@ -64,6 +64,20 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
     });
   }
 
+  $scope.goTabForward = function () {
+    var selected = $ionicTabsDelegate.selectedIndex();
+    if (selected != -1) {
+      $ionicTabsDelegate.select(selected + 1);
+    }
+  }
+
+  $scope.goTabBack = function () {
+    var selected = $ionicTabsDelegate.selectedIndex();
+    if (selected != -1 && selected != 0) {
+      $ionicTabsDelegate.select(selected - 1);
+    }
+  }
+
   $scope.goToRecipe = function goToRecipe(recipe) {
     $state.go("searcher.recipeShow", {idRecipe: recipe.id});
   }
@@ -84,6 +98,6 @@ function searcherController($scope, $state, $ionicHistory, APIService) {
 
 };
 
-searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService'];
+searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService', '$ionicTabsDelegate'];
 
 export default searcherController;
