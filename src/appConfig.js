@@ -1,9 +1,10 @@
-import landingController from './landing/landingController';
+import loginController from './login/loginController';
+import mainController from './main/mainController';
 import searcherController from './searcher/searcherController';
 import showRecipeController from './recipe/showRecipeController';
 
 function appConfig($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/searcher/search');
+  $urlRouterProvider.otherwise('/login');
 
   $stateProvider
   // .state('landing', {
@@ -12,14 +13,26 @@ function appConfig($stateProvider, $urlRouterProvider) {
   //   controller: landingController
   // })
 
-  .state('searcher', {
-    url: '/searcher',
+  .state('login', {
+    url: '/login',
+    templateUrl: './login/login.html',
+    controller: loginController
+  })
+
+  .state('main', {
+    url: '/main',
     abstract: true,
+    templateUrl: './main/main.html',
+    controller: mainController
+  })
+
+  .state('main.searcher', {
+    url: '/searcher',
     templateUrl: './searcher/searcher.html',
     controller: searcherController
   })
 
-  .state('searcher.search', {
+  .state('main.searcher.search', {
     url: '/search',
     views: {
       'search-tab':{
@@ -28,7 +41,7 @@ function appConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
-  .state('searcher.parameters', {
+  .state('main.searcher.parameters', {
     url: '/parameters',
     views: {
       'parameters-tab':{
@@ -37,7 +50,7 @@ function appConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
-  .state('searcher.recipeShow', {
+  .state('main.searcher.recipeShow', {
     url: '/recipe/:idRecipe',
     views: {
       'search-tab':{
