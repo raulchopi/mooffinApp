@@ -14,10 +14,11 @@ var paths = {
   sass: ['./src/**/*.{scss,sass}'],
   js: ['./src/**/*.js'],
   html: ['./src/**/*.html'],
-  fonts: ['**/*.{eot,svg,ttf,woff,woff2}']
+  fonts: ['**/*.{eot,svg,ttf,woff,woff2}'],
+  images: ['./src/**/*.{png,jpg,svg}']
 };
 
-gulp.task('default', ['sass','js','html', 'fonts']);
+gulp.task('default', ['sass','js','html', 'fonts', 'images']);
 
 gulp.task('sass', function(done) {
   gulp.src('./src/app.sass')
@@ -67,6 +68,11 @@ gulp.task('fonts', function() {
   .pipe(flatten())
   .pipe(gulp.dest('./www/fonts'));
 });
+
+gulp.task('images', function() {
+  gulp.src(paths.images)
+  .pipe(gulp.dest('./www/'));
+})
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
