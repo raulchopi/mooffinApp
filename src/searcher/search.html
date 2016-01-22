@@ -5,6 +5,8 @@
       <i class="fa fa-search placeholder-icon"></i>
       <input type="search" placeholder="Buscar" ng-model="nameFilter.value" ng-minlength="2">
     </label>
+    <!-- <button type="button" name="button" ng-click="googleLogin()">google</button>
+    <button type="button" name="button" ng-click="facebookLogin()">facebook</button> -->
     <!-- ingredient list -->
     <ul class="list ingList" ng-if="nameFilter.value != ''">
       <li class="item" ng-repeat="i in ingredients | filter: {nombre: nameFilter.value} | limitTo: 15 | orderBy: 'nombre'"

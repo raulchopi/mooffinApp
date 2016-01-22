@@ -1,5 +1,5 @@
 
-function searcherController($scope, $state, $ionicHistory, APIService, $ionicTabsDelegate) {
+function searcherController($scope, $state, $ionicHistory, APIService, $ionicTabsDelegate, $cordovaOauth) {
 
   $scope.ingredients = [];
   $scope.ingSelected = [];
@@ -88,16 +88,36 @@ function searcherController($scope, $state, $ionicHistory, APIService, $ionicTab
 
   $scope.$on('changeHideTabs', function(event, args) {
     $scope.hideTabs = args;
-  })
+  });
 
   $scope.$on('$ionicView.enter', function(){
     if($state.current.name != "searcher.recipeShow"){
       $scope.hideTabs = false;
     }
-  })
+  });
+
+  // $scope.googleLogin = function googleLogin() {
+  //   $cordovaOauth.google("306861178343-44gvfs26krqj4usqj4vkfkn438kh795e.apps.googleusercontent.com", ["https://www.googleapis.com/auth/urlshortener", "https://www.googleapis.com/auth/userinfo.email"]).then(function(result) {
+  //     $scope.data = result.access_token;
+  //     $state.go("searcher.search");
+  //   }, function(error) {
+  //     console.log(error);
+  //   });
+  // };
+  //
+  // $scope.facebookLogin = function facebookLogin() {
+  //
+  //   $cordovaOauth.facebook("1473730946221977", ["email"], {redirect_uri: 'http://www.mooffin.es/callback'}).then(function(result) {
+  //     $scope.data = result.access_token;
+  //     $state.go("searcher.search");
+  //   }, function(error) {
+  //     console.log(error);
+  //   });
+  // };
+
 
 };
 
-searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService', '$ionicTabsDelegate'];
+searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService', '$ionicTabsDelegate', '$cordovaOauth'];
 
 export default searcherController;

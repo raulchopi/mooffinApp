@@ -25,12 +25,17 @@
     "cordova-plugin-splashscreen",
     "com.ionic.keyboard"
   ],
-  "cordovaPlatforms": [],
+  "cordovaPlatforms": [
+    "android"
+  ],
   "jspm": {
     "dependencies": {
+      "angular": "github:angular/bower-angular@^1.4.8",
       "driftyco/ionic-bower": "github:driftyco/ionic-bower@^1.2.4",
       "font-awesome": "npm:font-awesome@^4.5.0",
       "gulp-flatten": "npm:gulp-flatten@^0.2.0",
+      "ng-cordova": "npm:ng-cordova@^0.1.24-alpha",
+      "nraboy/ng-cordova-oauth": "github:nraboy/ng-cordova-oauth@0.2.0",
       "q": "npm:q@^1.4.1",
       "ramda": "npm:ramda@^0.19.1"
     },
