@@ -1,5 +1,14 @@
 <ion-view>
-  <ion-nav-title>{{recipe.titulo}}</ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear fa fa-angle-left" ng-click="myGoBack()">
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-bar>
+    <!-- <ion-nav-back-button class="button button-icon button-clear fa fa-angle-left">
+    </ion-nav-back-button> -->
+    <ion-nav-title>{{recipe.titulo}}</ion-nav-title>
+  </ion-nav-bar>
+
   <ion-content class="contentWrapper showRecipeWrapper">
     <div class="header-image">
       <!-- <img src="http://www.mooffin.es{{recipe.image}}"
@@ -8,7 +17,7 @@
         <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.image_name === null"> -->
     </div>
     <div class="fillNoPhoto" ng-if="recipe.image_name === null"></div>
-    <div class="recipeTextWrapper">      
+    <div class="recipeTextWrapper">
       <div class="userAvatarWrapper">
         <img src="http://www.mooffin.es{{recipe.usuario.avatar}}">
       </div>

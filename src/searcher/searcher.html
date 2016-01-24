@@ -1,11 +1,19 @@
-<ion-tabs class="tabs-icon-top tabs-positive" ng-class="{'tabs-item-hide': hideTabs}">
+<ion-view class="searcherWrapper">
+  <ion-nav-bar class="searcherBar">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear fa fa-bars" menu-toggle="left">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-title>Buscador</ion-nav-title>
+  </ion-nav-bar>
+  <ion-tabs class="tabs-icon-top tabs-positive searcherTabs" ng-class="{'tabs-item-hide': hideTabs}">
+    <ion-tab title="Buscador" ui-sref="main.searcher.search">
+      <ion-nav-view name="search-tab"></ion-nav-view>
+    </ion-tab>
 
-  <ion-tab title="Buscador" ui-sref="searcher.search">
-    <ion-nav-view name="search-tab"></ion-nav-view>
-  </ion-tab>
+    <ion-tab title="Parámetros" ui-sref="main.searcher.parameters">
+      <ion-nav-view name="parameters-tab"></ion-nav-view>
+    </ion-tab>
 
-  <ion-tab title="Parámetros" ui-sref="searcher.parameters">
-    <ion-nav-view name="parameters-tab"></ion-nav-view>
-  </ion-tab>
-
-</ion-tabs>
+  </ion-tabs>
+</ion-view>

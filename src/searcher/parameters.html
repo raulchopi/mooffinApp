@@ -1,21 +1,18 @@
-<ion-view>
-  <ion-nav-title style="font-size: 1.4em;">Mooffin</ion-nav-title>
-  <ion-content class="contentWrapper" on-swipe-right="goTabBack()" on-swipe-left="goTabForward()">
-    <div class="ingSelectedWrapper">
-      <div class="titleWrapper">
-        <span class="title">Ingredientes seleccionados</span>
-        <span class="tip" ng-if="ingSelected.length > 0">(Toque en un ingrediente para eliminarlo)</span>
-      </div>
-      <span class="line" ng-if="ingSelected.length > 0"></span>
-      <ul class="ingList">
-        <li class="ing" ng-repeat="s in ingSelected" ng-click="removeIng($index)">
-          {{s.nombre}}
-        </li>
-      </ul>
-      <span class="noIngSelected" ng-if="ingSelected.length === 0">
-        No se ha seleccionado ningún ingrediente
-      </span>
+<ion-content class="contentWrapper parametersWrapper" on-swipe-right="goTabBack()" on-swipe-left="goTabForward()">
+  <div class="ingSelectedWrapper">
+    <div class="titleWrapper">
+      <span class="title">Ingredientes seleccionados</span>
+      <span class="tip" ng-if="ingSelected.length > 0">(Toque en un ingrediente para eliminarlo)</span>
     </div>
+    <span class="line" ng-if="ingSelected.length > 0"></span>
+    <ul class="ingList">
+      <li class="ing" ng-repeat="s in ingSelected" ng-click="removeIng($index)">
+        {{s.nombre}}
+      </li>
+    </ul>
+    <span class="noIngSelected" ng-if="ingSelected.length === 0">
+      No se ha seleccionado ningún ingrediente
+    </span>
+  </div>
 
-  </ion-content>
-</ion-view>
+</ion-content>

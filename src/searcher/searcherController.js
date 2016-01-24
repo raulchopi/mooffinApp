@@ -1,5 +1,5 @@
 
-function searcherController($scope, $state, $ionicHistory, APIService, $ionicTabsDelegate, $cordovaOauth) {
+function searcherController($scope, $state, $ionicHistory, APIService, $ionicTabsDelegate) {
 
   $scope.ingredients = [];
   $scope.ingSelected = [];
@@ -79,8 +79,12 @@ function searcherController($scope, $state, $ionicHistory, APIService, $ionicTab
   }
 
   $scope.goToRecipe = function goToRecipe(recipe) {
-    $state.go("searcher.recipeShow", {idRecipe: recipe.id});
+    $state.go("main.recipeShow", {idRecipe: recipe.id});
   }
+
+  $scope.goToParameters = function goToParameters() {
+    $state.go("main.searcher.parameters");
+  };
 
   $scope.myGoBack = function myGoBack() {
     $ionicHistory.goBack();
@@ -91,33 +95,13 @@ function searcherController($scope, $state, $ionicHistory, APIService, $ionicTab
   });
 
   $scope.$on('$ionicView.enter', function(){
-    if($state.current.name != "searcher.recipeShow"){
+    if($state.current.name != "main.recipeShow"){
       $scope.hideTabs = false;
     }
   });
 
-  // $scope.googleLogin = function googleLogin() {
-  //   $cordovaOauth.google("306861178343-44gvfs26krqj4usqj4vkfkn438kh795e.apps.googleusercontent.com", ["https://www.googleapis.com/auth/urlshortener", "https://www.googleapis.com/auth/userinfo.email"]).then(function(result) {
-  //     $scope.data = result.access_token;
-  //     $state.go("searcher.search");
-  //   }, function(error) {
-  //     console.log(error);
-  //   });
-  // };
-  //
-  // $scope.facebookLogin = function facebookLogin() {
-  //
-  //   $cordovaOauth.facebook("1473730946221977", ["email"], {redirect_uri: 'http://www.mooffin.es/callback'}).then(function(result) {
-  //     $scope.data = result.access_token;
-  //     $state.go("searcher.search");
-  //   }, function(error) {
-  //     console.log(error);
-  //   });
-  // };
-
-
 };
 
-searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService', '$ionicTabsDelegate', '$cordovaOauth'];
+searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService', '$ionicTabsDelegate'];
 
 export default searcherController;

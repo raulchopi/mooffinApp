@@ -3,9 +3,9 @@ import Q from 'q';
 
 function APIService(ajaxService, $http) {
 
-  // let basePath = "http://www.mooffin.es/api/v1"
+  let basePath = "http://www.mooffin.es/api/v1"
   // let basePath = "http://192.168.20.56:8100/api"
-  let basePath = "http://localhost:8100/api"
+  // let basePath = "http://localhost:8100/api"
 
 
   // $http.defaults.headers.common["Authorization"] = $localStorage.token;
@@ -50,6 +50,7 @@ function APIService(ajaxService, $http) {
     getIngredients: handledCall('get', `${basePath}/ingredients`, undefined),
     getProposals:  handledCall('get', `${basePath}/proposals`, undefined),
     getRecipe:  handledCall('get', `${basePath}/recipes/{id}`, undefined),
+    getLastRecipes:  handledCall('get', `${basePath}/lastRecipes/{number}`, undefined),
   }
 }
 

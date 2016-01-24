@@ -1,5 +1,6 @@
 import loginController from './login/loginController';
 import mainController from './main/mainController';
+import lastRecipesController from './recipe/lastRecipesController';
 import searcherController from './searcher/searcherController';
 import showRecipeController from './recipe/showRecipeController';
 
@@ -28,8 +29,22 @@ function appConfig($stateProvider, $urlRouterProvider) {
 
   .state('main.searcher', {
     url: '/searcher',
-    templateUrl: './searcher/searcher.html',
-    controller: searcherController
+    views: {
+      'menuContent': {
+        templateUrl: './searcher/searcher.html',
+        controller: searcherController
+      }
+    }
+  })
+
+  .state('main.lastRecipes', {
+    url: '/lastRecipes',
+    views: {
+      'menuContent': {
+        templateUrl: './recipe/last.html',
+        controller: lastRecipesController
+      }
+    }
   })
 
   .state('main.searcher.search', {
@@ -50,10 +65,10 @@ function appConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
-  .state('main.searcher.recipeShow', {
+  .state('main.recipeShow', {
     url: '/recipe/:idRecipe',
     views: {
-      'search-tab':{
+      'menuContent':{
         templateUrl: './recipe/show.html',
         controller: showRecipeController
       }

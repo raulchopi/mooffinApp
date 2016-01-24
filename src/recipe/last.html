@@ -1,0 +1,22 @@
+<ion-view title="{{navTitle}}">
+  <ion-content has-header="true" padding="true">
+
+    <div class="loading" style="text-align: center" ng-if="loadingProp">
+      <span class="text">Buscando recetas...</span>
+      <i class="fa fa-2x fa-spinner fa-spin"></i>
+    </div>
+
+    <!-- proposal list -->
+    <div class="list proposalsList">
+      <a class="item item-thumbnail-left proposal" ng-click="goToRecipe(p)" collection-repeat="p in lastRecipes"
+        item-width="100%" item-height="100px">
+        <img src="http://www.mooffin.es{{p.image}}" ng-if="p.image_name !== null">
+        <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="p.image_name === null">
+        <h2 class="title">{{p.title}}</h2>
+        <p class="desc">{{p.desc}}</p>
+      </a>
+    </div>
+
+  </ion-content>
+
+</ion-view>

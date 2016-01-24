@@ -1,17 +1,15 @@
-<ion-nav-bar animation="nav-title-slide-ios7"
-                 type="bar-positive"
-                 back-button-type="button-icon"
-                 back-button-icon="ion-ios7-arrow-back">
-    </ion-nav-bar>
+<ion-view title="Login" class="bubble-background">
 
-    <ion-view title="Login" class="bubble-background">
+  <ion-content has-header="true" padding="true" class="loginWrapper">
 
-        <ion-content has-header="true" padding="true" class="loginWrapper">
+    <h1>Página de bienvenida</h1>
 
-            <h1>Página de bienvenida</h1>
+    <a class="button button-positive" ng-click="logIn()">Entrar</a>
 
-            <a class="button button-positive" ng-click="logIn()">Log In</a>
+    <a class="button button-positive" ng-click="googleLogin()">google</a>
 
-        </ion-content>
+    <a class="button button-positive" ng-click="facebookLogin()">facebook</a>
 
-    </ion-view>
+  </ion-content>
+
+</ion-view>

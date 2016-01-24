@@ -1,8 +1,8 @@
 function mainController($scope, $state, $stateParams) {
 
-  // $scope.logIn = function logIn() {
-  //   $state.go("searcher.search");
-  // };
+  $scope.goToSearcher = function goToSearcher() {
+    $state.go("main.searcher.search");
+  };
 };
 
 mainController.$inject = ['$scope', '$state', '$stateParams'];
