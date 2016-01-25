@@ -51,6 +51,7 @@ function APIService(ajaxService, $http) {
     getProposals:  handledCall('get', `${basePath}/proposals`, undefined),
     getRecipe:  handledCall('get', `${basePath}/recipes/{id}`, undefined),
     getLastRecipes:  handledCall('get', `${basePath}/lastRecipes/{number}`, undefined),
+    getUserByUid:  handledCall('post', `${basePath}/userByUid`, undefined),
   }
 }
 
