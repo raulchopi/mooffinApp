@@ -1,23 +1,21 @@
 import Q from 'q';
 
-function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $localStorage, APIService) {
+function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $localStorage, APIService, UserService) {
+
+  if(UserService.isUserLogged())
+    $state.go('main.searcher');
 
   $scope.logIn = function logIn() {
     $state.go("main.searcher");
   };
 
-  $scope.userInfo = {};
-
+  $scope.userLogged = UserService.isUserLogged();
 
   $scope.googleLogin = function googleLogin() {
     $cordovaOauth.google("306861178343-44gvfs26krqj4usqj4vkfkn438kh795e.apps.googleusercontent.com", ["https://www.googleapis.com/auth/urlshortener", "https://www.googleapis.com/auth/userinfo.email"]).then(function(result) {
-      console.log("result");
-      console.log(result);
       $localStorage.token = result.access_token;
       var auth = {};
       getUserInfoGoogle(result.access_token).then(function(response) {
-        console.log("resp - ");
-        console.log(response);
         getUserByUid(response);
         $state.go("main.searcher");
       }, function(error) {
@@ -52,12 +50,10 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
     });
     http.then(function (data) {
         var user_data = data.data;
-        console.log("http.then");
-        console.log(user_data);
         var auth = {
           provider: 'google_oauth2',
-          name: user_data.given_name,
-          surname: user_data.family_name,
+          first_name: user_data.given_name,
+          last_name: user_data.family_name,
           username: user_data.sub,
           gender: user_data.gender,
           email: user_data.email,
@@ -99,15 +95,10 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
 
 
   function getUserByUid(data) {
-    console.log(data);
     var auth = {auth: data}
-    console.log("y esto que");
-    console.log(auth);
     APIService.getUserByUid(auth)
     .then(function(response) {
       $localStorage.user = response.user;
-      console.log("YEAH OOOOOH");
-      console.log($response.user);
       $scope.$apply();
     })
     .catch(function(error) {
@@ -121,6 +112,6 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
 
 };
 
-loginController.$inject = ['$scope', '$state', '$stateParams', '$cordovaOauth', '$http', '$localStorage', 'APIService'];
+loginController.$inject = ['$scope', '$state', '$stateParams', '$cordovaOauth', '$http', '$localStorage', 'APIService', 'UserService'];
 
 export default loginController;

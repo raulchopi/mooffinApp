@@ -2,13 +2,15 @@
 
   <ion-content has-header="true" padding="true" class="loginWrapper">
 
-    <h1>Página de bienvenida</h1>
+    <div class="logoWrapper">
+      <img ng-src="images/logo_big_white.png"/>
+    </div>
 
-    <a class="button button-positive" ng-click="logIn()">Entrar</a>
+    <a class="btn btnGoogle" ng-click="googleLogin()">Google</a>
 
-    <a class="button button-positive" ng-click="googleLogin()">google</a>
+    <a class="btn btnFacebook" ng-click="facebookLogin()">Facebook</a>
 
-    <a class="button button-positive" ng-click="facebookLogin()">facebook</a>
+    <a class="btn btnEnter" ng-click="logIn()">Entrar sin registro</a>
 
   </ion-content>
 

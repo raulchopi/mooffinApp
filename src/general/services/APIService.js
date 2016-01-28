@@ -1,18 +1,18 @@
 import R from 'ramda'
 import Q from 'q';
 
-function APIService(ajaxService, $http) {
+function APIService(ajaxService, $http, $localStorage) {
 
   let basePath = "http://www.mooffin.es/api/v1"
   // let basePath = "http://192.168.20.56:8100/api"
   // let basePath = "http://localhost:8100/api"
 
 
-  // $http.defaults.headers.common["Authorization"] = $localStorage.token;
+  // $http.defaults.headers.common["X-CSRF-Token"] = $localStorage.token;
   $http.defaults.headers.post["Content-Type"] = "application/json";
 
   let handledCall = R.curry(function handledCall(method, path, cache, form) {
-    // $http.defaults.headers.common["Authorization"] = $localStorage.token;
+    // $http.defaults.headers.post['X-CSRF-Token'] = $localStorage.token;
     let defer = Q.defer();
 
     ajaxService.cachedCall(method, path, cache, angular.copy(form))
@@ -52,9 +52,11 @@ function APIService(ajaxService, $http) {
     getRecipe:  handledCall('get', `${basePath}/recipes/{id}`, undefined),
     getLastRecipes:  handledCall('get', `${basePath}/lastRecipes/{number}`, undefined),
     getUserByUid:  handledCall('post', `${basePath}/userByUid`, undefined),
+    getUserFavsRecipes:  handledCall('get', `${basePath}/user/{id}/favs`, undefined),
+    getUserRecipes:  handledCall('get', `${basePath}/user/{id}/recipes`, undefined),
   }
 }
 
-APIService.$inject = ['ajaxService', '$http'];
+APIService.$inject = ['ajaxService', '$http', '$localStorage'];
 
 export default APIService

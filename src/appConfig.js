@@ -3,9 +3,12 @@ import mainController from './main/mainController';
 import lastRecipesController from './recipe/lastRecipesController';
 import searcherController from './searcher/searcherController';
 import showRecipeController from './recipe/showRecipeController';
+import userRecipesController from './user/userRecipesController';
+import favsRecipesController from './recipe/favsRecipesController';
 
 function appConfig($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/login');
+
+  $urlRouterProvider.otherwise('login');
 
   $stateProvider
   // .state('landing', {
@@ -43,6 +46,26 @@ function appConfig($stateProvider, $urlRouterProvider) {
       'menuContent': {
         templateUrl: './recipe/last.html',
         controller: lastRecipesController
+      }
+    }
+  })
+
+  .state('main.userRecipes', {
+    url: '/userRecipes',
+    views: {
+      'menuContent': {
+        templateUrl: './user/userRecipes.html',
+        controller: userRecipesController
+      }
+    }
+  })
+
+  .state('main.favRecipes', {
+    url: '/favRecipes',
+    views: {
+      'menuContent': {
+        templateUrl: './recipe/favs.html',
+        controller: favsRecipesController
       }
     }
   })
