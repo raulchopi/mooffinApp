@@ -11,10 +11,12 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
 
   $scope.userLogged = UserService.isUserLogged();
 
+
+  // ************** GOOGLE LOGIN
+
   $scope.googleLogin = function googleLogin() {
     $cordovaOauth.google("306861178343-44gvfs26krqj4usqj4vkfkn438kh795e.apps.googleusercontent.com", ["https://www.googleapis.com/auth/urlshortener", "https://www.googleapis.com/auth/userinfo.email"]).then(function(result) {
       $localStorage.token = result.access_token;
-      var auth = {};
       getUserInfoGoogle(result.access_token).then(function(response) {
         getUserByUid(response);
         $state.go("main.searcher");
@@ -26,18 +28,6 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
       console.log(error);
     });
   };
-
-  $scope.facebookLogin = function facebookLogin() {
-
-    $cordovaOauth.facebook("1473730946221977", ["email"]).then(function(result) {
-      // $localStorage.token = result.access_token;
-      console.log(result);
-      $state.go("main.searcher");
-    }, function(error) {
-      console.log(error);
-    });
-  };
-
 
   function getUserInfoGoogle(access_token) {
     let defer = Q.defer();
@@ -68,7 +58,26 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
     return defer.promise;
   };
 
+  // ************** FACEBOOK LOGIN
+  $scope.facebookLogin = function facebookLogin() {
+
+    $cordovaOauth.facebook("1473730946221977", ["email"]).then(function(result) {
+      $localStorage.token = result.access_token;
+      getUserInfoFacebook(result.access_token).then(function(response) {
+        getUserByUid(response);
+        $state.go("main.searcher");
+      }, function(error) {
+        console.log(error);
+      });
+      console.log(result);
+      $state.go("main.searcher");
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
   function getUserInfoFacebook(access_token) {
+    let defer = Q.defer();
     var http = $http({
         url: 'https://graph.facebook.com/me',
         method: 'GET',
@@ -80,17 +89,67 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
         var user_data = data.data;
         var auth = {
             provider: 'facebook',
-            name: user_data.given_name,
-            surname: user_data.family_name,
-            username: user_data.sub,
+            name: user_data.first_name,
+            surname: user_data.last_name,
+            username: user_data.id,
             gender: user_data.gender,
             email: user_data.email,
-            uid: user_data.sub,
-            avatar: user_data.picture,
-            profile: user_data.profile
+            uid: user_data.id,
+            avatar: null,
+            profile: user_data.link
         };
-        return auth;
+        defer.resolve(auth);
+    })
+    .catch(defer.reject);
+
+    return defer.promise;
+  };
+
+  // $scope.facebookLogin = function facebookLogin() {
+  //
+  //   $cordovaOauth.facebook("1473730946221977", ["email"]).then(function(result) {
+  //     $localStorage.token = result.access_token;
+  //     getUserInfoFacebook(result.access_token).then(function(response) {
+  //       getFacebookPicture(response.uid).then(function(pictureUrl) {
+  //         console.log("dentro");
+  //         console.log(response);
+  //         console.log(pictureUrl);
+  //         response.avatar = pictureUrl;
+  //         console.log(response);
+  //         getUserByUid(response);
+  //         $state.go("main.searcher");
+  //       }, function(error) {
+  //         console.log(error);
+  //       });
+  //
+  //     }, function(error) {
+  //       console.log(error);
+  //     });
+  //     console.log(result);
+  //     $state.go("main.searcher");
+  //   }, function(error) {
+  //     console.log(error);
+  //   });
+  // };
+
+
+  function getFacebookPicture(id) {
+    let defer = Q.defer();
+    var http = $http({
+        url: 'https://graph.facebook.com/' + auth.uid + '/picture?type=large',
+        method: 'GET'
     });
+
+    http.then(function (data) {
+      console.log("2");
+      console.log(data);
+      var auth = data.url;
+      console.log(auth);
+      defer.resolve(auth);
+    })
+    .catch(defer.reject);
+
+    return defer.promise;
   };
 
 
