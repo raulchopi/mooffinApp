@@ -9,9 +9,6 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
     $state.go("main.searcher");
   };
 
-  $scope.userLogged = UserService.isUserLogged();
-
-
   // ************** GOOGLE LOGIN
 
   $scope.googleLogin = function googleLogin() {
@@ -19,7 +16,6 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
       $localStorage.token = result.access_token;
       getUserInfoGoogle(result.access_token).then(function(response) {
         getUserByUid(response);
-        $state.go("main.searcher");
       }, function(error) {
         console.log(error);
       });
@@ -65,12 +61,9 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
       $localStorage.token = result.access_token;
       getUserInfoFacebook(result.access_token).then(function(response) {
         getUserByUid(response);
-        $state.go("main.searcher");
       }, function(error) {
         console.log(error);
       });
-      console.log(result);
-      $state.go("main.searcher");
     }, function(error) {
       console.log(error);
     });
@@ -157,12 +150,11 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
     var auth = {auth: data}
     APIService.getUserByUid(auth)
     .then(function(response) {
-      $localStorage.user = response.user;
-      $scope.$apply();
+      UserService.setUser(response.user);
+      $state.go("main.searcher", {}, { reload: true });
     })
     .catch(function(error) {
       $localStorage.user = {};
-      $scope.$apply();
       console.error('an error has ocurred');
       console.error(error || "Undefined error");
     });

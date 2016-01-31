@@ -1,12 +1,13 @@
 function mainController($scope, $state, $stateParams, $localStorage, UserService) {
 
-  $scope.goToSearcher = function goToSearcher() {
-    $state.go("main.searcher.search");
-  };
+  $scope.userLogged = UserService.isUserLogged();
+  $scope.user = UserService.getUser();
 
   $scope.logout = function logout() {
     UserService.setUser(false);
     $localStorage.token = false;
+    $scope.userLogged = false;
+    $scope.user = {};
     $state.go("login");
   };
 
@@ -14,8 +15,6 @@ function mainController($scope, $state, $stateParams, $localStorage, UserService
     $state.go("login");
   };
 
-  $scope.userLogged = UserService.isUserLogged();
-  $scope.user = UserService.getUser();
 };
 
 mainController.$inject = ['$scope', '$state', '$stateParams', '$localStorage', 'UserService'];
