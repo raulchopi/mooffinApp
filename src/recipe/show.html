@@ -29,6 +29,10 @@
         <span class="desc">{{recipe.desc}}</span>
       </div>
       <span class="line" ng-if="recipe.desc != ''"></span>
+      <div class="likeWrapper">
+        <i class="fa fa-heart-o" ng-if="!doLike" ng-click="likeThisRecipe()"></i>
+        <i class="fa fa-heart" ng-if="doLike" ng-click="dontLikeThisRecipe()"></i>
+      </div>
       <div class="ingredients">
         <ul>
           <li ng-repeat="ing in recipe.ingredientes">{{ing.texto}}</li>

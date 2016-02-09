@@ -54,6 +54,9 @@ function APIService(ajaxService, $http, $localStorage) {
     getUserByUid:  handledCall('post', `${basePath}/userByUid`, undefined),
     getUserFavsRecipes:  handledCall('get', `${basePath}/user/{id}/favs`, undefined),
     getUserRecipes:  handledCall('get', `${basePath}/user/{id}/recipes`, undefined),
+    userLikeRecipe:  handledCall('get', `${basePath}/user/{userId}/likes/{recipeId}`, undefined),
+    doLikeRecipe:  handledCall('post', `${basePath}/doLikeRecipe`, undefined),
+    dontLikeRecipe:  handledCall('post', `${basePath}/dontLikeRecipe`, undefined)
   }
 }
 
