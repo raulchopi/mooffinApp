@@ -41,6 +41,7 @@ function appConfig($stateProvider, $urlRouterProvider) {
   })
 
   .state('main.lastRecipes', {
+    cache: false,
     url: '/lastRecipes',
     views: {
       'menuContent': {
@@ -61,6 +62,7 @@ function appConfig($stateProvider, $urlRouterProvider) {
   })
 
   .state('main.favRecipes', {
+    cache: false,
     url: '/favRecipes',
     views: {
       'menuContent': {
