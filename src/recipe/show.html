@@ -10,39 +10,41 @@
   </ion-nav-bar>
 
   <ion-content class="contentWrapper showRecipeWrapper">
-    <div class="header-image">
-      <!-- <img src="http://www.mooffin.es{{recipe.image}}"
-        ng-if="recipe.photo_file_name !== null"> -->
-        <img src="http://www.mooffin.es{{recipe.image}}" ng-if="recipe.image_name !== null">
-        <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.image_name === null"> -->
-    </div>
-    <div class="fillNoPhoto" ng-if="recipe.image_name === null"></div>
-    <div class="recipeTextWrapper">
-      <div class="userAvatarWrapper">
-        <img src="http://www.mooffin.es{{recipe.usuario.avatar}}">
+    <div class="wrapper" ng-if="!loading">
+      <div class="header-image">
+        <!-- <img src="http://www.mooffin.es{{recipe.image}}"
+          ng-if="recipe.photo_file_name !== null"> -->
+          <img src="http://www.mooffin.es{{recipe.image}}" ng-if="recipe.image_name !== null">
+          <!-- <img src="http://www.mooffin.es/assets{{p.image}}" ng-if="recipe.image_name === null"> -->
       </div>
-      <div class="titleWrapper">
-        <span class="title">{{recipe.titulo}}</span>
-      </div>
-      <span class="line" ng-if="recipe.desc != ''"></span>
-      <div class="descWrapper" ng-if="recipe.desc != ''">
-        <span class="desc">{{recipe.desc}}</span>
-      </div>
-      <span class="line" ng-if="recipe.desc != ''"></span>
-      <div class="likeWrapper">
-        <i class="fa fa-heart-o" ng-if="!doLike" ng-click="likeThisRecipe()"></i>
-        <i class="fa fa-heart" ng-if="doLike" ng-click="dontLikeThisRecipe()"></i>
-      </div>
-      <div class="ingredients">
-        <ul>
-          <li ng-repeat="ing in recipe.ingredientes">{{ing.texto}}</li>
-        </ul>
-      </div>
+      <div class="fillNoPhoto" ng-if="recipe.image_name === null"></div>
+      <div class="recipeTextWrapper">
+        <div class="userAvatarWrapper">
+          <img src="http://www.mooffin.es{{recipe.usuario.avatar}}">
+        </div>
+        <div class="titleWrapper">
+          <span class="title">{{recipe.titulo}}</span>
+        </div>
+        <span class="line" ng-if="recipe.desc != ''"></span>
+        <div class="descWrapper" ng-if="recipe.desc != ''">
+          <span class="desc">{{recipe.desc}}</span>
+        </div>
+        <span class="line" ng-if="recipe.desc != ''"></span>
+        <div class="likeWrapper">
+          <i class="fa fa-heart-o" ng-if="!doLike" ng-click="likeThisRecipe()"></i>
+          <i class="fa fa-heart" ng-if="doLike" ng-click="dontLikeThisRecipe()"></i>
+        </div>
+        <div class="ingredients">
+          <ul>
+            <li ng-repeat="ing in recipe.ingredientes">{{ing.texto}}</li>
+          </ul>
+        </div>
 
-      <div class="steps">
-        <ul>
-          <li class="step" ng-repeat="paso in recipe.pasos">{{paso.desc}}</li>
-        </ul>
+        <div class="steps">
+          <ul>
+            <li class="step" ng-repeat="paso in recipe.pasos">{{paso.desc}}</li>
+          </ul>
+        </div>
       </div>
     </div>
 

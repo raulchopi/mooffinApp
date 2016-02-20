@@ -6,6 +6,10 @@
       <i class="fa fa-2x fa-spinner fa-spin"></i>
     </div>
 
+    <div class="noRecipes" ng-if="userFavsRecipes.length == 0">
+      <span class="text">No tienes ninguna receta favorita</span>
+    </div>
+
     <!-- proposal list -->
     <div class="list proposalsList">
       <a class="item item-thumbnail-left proposal" ng-click="goToRecipe(p)" collection-repeat="p in userFavsRecipes"

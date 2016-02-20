@@ -6,6 +6,10 @@
       <i class="fa fa-2x fa-spinner fa-spin"></i>
     </div>
 
+    <div class="noRecipes" ng-if="userRecipes.length == 0">
+      <span class="text">No has subido ninguna receta.<br/>Recuerda que puedes subirlas desde la web!</span>
+    </div>
+
     <!-- proposal list -->
     <div class="list proposalsList">
       <a class="item item-thumbnail-left proposal" ng-click="goToRecipe(p)" collection-repeat="p in userRecipes"
