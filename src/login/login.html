@@ -12,6 +12,11 @@
 
     <a class="btn btnEnter" ng-click="logIn()">Entrar sin registro</a>
 
+    <div class="loadingLogin" ng-if="loading">
+      <span class="text">Cargando...</span>
+      <i class="fa fa-2x fa-spinner fa-spin"></i>
+    </div>
+
   </ion-content>
 
 </ion-view>

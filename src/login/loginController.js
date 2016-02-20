@@ -9,18 +9,23 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
     $state.go("main.searcher");
   };
 
+  $scope.loading = false;
+
   // ************** GOOGLE LOGIN
 
   $scope.googleLogin = function googleLogin() {
+    $scope.loading = true;
     $cordovaOauth.google("306861178343-44gvfs26krqj4usqj4vkfkn438kh795e.apps.googleusercontent.com", ["https://www.googleapis.com/auth/urlshortener", "https://www.googleapis.com/auth/userinfo.email"]).then(function(result) {
       $localStorage.token = result.access_token;
       getUserInfoGoogle(result.access_token).then(function(response) {
         getUserByUid(response);
       }, function(error) {
+        $scope.loading = false;
         console.log(error);
       });
 
     }, function(error) {
+      $scope.loading = false;
       console.log(error);
     });
   };
@@ -151,10 +156,12 @@ function loginController($scope, $state, $stateParams, $cordovaOauth, $http, $lo
     APIService.getUserByUid(auth)
     .then(function(response) {
       UserService.setUser(response.user);
+      $scope.loading = false;
       $state.go("main.searcher", {}, { reload: true });
     })
     .catch(function(error) {
       $localStorage.user = {};
+      $scope.loading = false;
       console.error('an error has ocurred');
       console.error(error || "Undefined error");
     });
