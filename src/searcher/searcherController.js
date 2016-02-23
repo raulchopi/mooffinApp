@@ -5,10 +5,12 @@ function searcherController($scope, $state, $ionicHistory, APIService, $ionicTab
   $scope.ingSelected = [];
   $scope.idsIngSelected = [];
   $scope.proposals = [];
+  $scope.proposalsByName = [];
   $scope.nameFilter = {value: ''};
   $scope.loadingIng = false;
   $scope.loadingProp = false;
   $scope.hideTabs = false;
+  $scope.filtro = {};
 
   getIngredients();
 
@@ -44,6 +46,21 @@ function searcherController($scope, $state, $ionicHistory, APIService, $ionicTab
     else{
       $scope.proposals = [];
     }
+  }
+
+  $scope.searchByName = function searchByName() {
+    $scope.loading = true;
+    APIService.searchByName({name: $scope.filtro.value})
+    .then(function(response) {
+      $scope.proposalsByName = response.recipes;
+      $scope.loading = false;
+      $scope.$apply();
+    })
+    .catch(function(error) {
+      $scope.loading = false;
+      $scope.$apply();
+      console.log(JSON.stringify(error));
+    });
   }
 
 

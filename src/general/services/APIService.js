@@ -49,6 +49,7 @@ function APIService(ajaxService, $http, $localStorage) {
 
     getIngredients: handledCall('get', `${basePath}/ingredients`, undefined),
     getProposals:  handledCall('get', `${basePath}/proposals`, undefined),
+    searchByName:  handledCall('get', `${basePath}/searchByName/{name}`, undefined),
     getRecipe:  handledCall('get', `${basePath}/recipes/{id}`, undefined),
     getLastRecipes:  handledCall('get', `${basePath}/lastRecipes/{number}`, undefined),
     getUserByUid:  handledCall('post', `${basePath}/userByUid`, undefined),

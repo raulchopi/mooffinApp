@@ -81,6 +81,15 @@ function appConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
+  .state('main.searcher.searchByName', {
+    url: '/searchByName',
+    views: {
+      'searchByName-tab':{
+        templateUrl: './searcher/searchByName.html'
+      }
+    }
+  })
+
   .state('main.searcher.parameters', {
     url: '/parameters',
     views: {

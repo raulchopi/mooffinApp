@@ -7,8 +7,12 @@
     <ion-nav-title>Buscador</ion-nav-title>
   </ion-nav-bar>
   <ion-tabs class="tabs-icon-top tabs-positive searcherTabs" ng-class="{'tabs-item-hide': hideTabs}">
-    <ion-tab title="Buscador" ui-sref="main.searcher.search">
+    <ion-tab title="Por ingredientes" ui-sref="main.searcher.search">
       <ion-nav-view name="search-tab"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Por nombre" ui-sref="main.searcher.searchByName">
+      <ion-nav-view name="searchByName-tab"></ion-nav-view>
     </ion-tab>
 
     <ion-tab title="Parámetros" ui-sref="main.searcher.parameters">
