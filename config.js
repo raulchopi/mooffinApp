@@ -1,17 +1,20 @@
 System.config({
-  defaultJSExtensions: true,
-  transpiler: "babel",
-  babelOptions: {
+  "transpiler": "babel",
+  "babelOptions": {
     "optional": [
       "runtime"
     ]
   },
-  paths: {
-    "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*"
+  "paths": {
+    "github:*": "jspm_packages/github/*.js",
+    "npm:*": "jspm_packages/npm/*.js",
+    "*": "*.js"
   },
+  "defaultJSExtensions": true
+});
 
-  map: {
+System.config({
+  "map": {
     "angular": "github:angular/bower-angular@1.4.8",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.24",
@@ -25,6 +28,7 @@ System.config({
     "nraboy/ng-cordova-oauth": "github:nraboy/ng-cordova-oauth@0.2.0",
     "q": "npm:q@1.4.1",
     "ramda": "npm:ramda@0.19.1",
+    "uuid-js": "npm:uuid-js@0.7.5",
     "github:angular-ui/ui-router@0.2.13": {
       "angular": "github:angular/bower-angular@1.4.8"
     },
@@ -654,3 +658,4 @@ System.config({
     }
   }
 });
+

@@ -1,5 +1,6 @@
 
-function searcherController($scope, $state, $ionicHistory, APIService, $ionicTabsDelegate) {
+function searcherController($scope, $state, $ionicHistory, APIService, $ionicTabsDelegate,
+  $ionicPlatform, $window, $cordovaGoogleAnalytics) {
 
   $scope.ingredients = [];
   $scope.ingSelected = [];
@@ -11,6 +12,12 @@ function searcherController($scope, $state, $ionicHistory, APIService, $ionicTab
   $scope.loadingProp = false;
   $scope.hideTabs = false;
   $scope.filtro = {};
+
+  $ionicPlatform.ready(function() {
+    if($window.cordova && $window.analytics) {
+      $cordovaGoogleAnalytics.trackView('Search Recipe');
+    }
+  });
 
   getIngredients();
 
@@ -119,6 +126,7 @@ function searcherController($scope, $state, $ionicHistory, APIService, $ionicTab
 
 };
 
-searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService', '$ionicTabsDelegate'];
+searcherController.$inject = ['$scope', '$state', '$ionicHistory', 'APIService',
+'$ionicTabsDelegate', '$ionicPlatform', '$window', '$cordovaGoogleAnalytics'];
 
 export default searcherController;

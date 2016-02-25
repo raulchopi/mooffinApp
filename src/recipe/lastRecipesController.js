@@ -1,8 +1,15 @@
-function lastRecipesController($scope, $state, $stateParams, APIService) {
+function lastRecipesController($scope, $state, $stateParams, APIService,
+  $ionicPlatform, $window, $cordovaGoogleAnalytics) {
 
   $scope.navTitle = 'Últimas recetas';
   $scope.lastRecipes = [];
   $scope.loading = false;
+
+  $ionicPlatform.ready(function() {
+    if($window.cordova && $window.analytics) {
+      $cordovaGoogleAnalytics.trackView('Last Recipes');
+    }
+  });
 
   getLastRecipes();
 
@@ -26,6 +33,7 @@ function lastRecipesController($scope, $state, $stateParams, APIService) {
   }
 };
 
-lastRecipesController.$inject = ['$scope', '$state', '$stateParams', 'APIService'];
+lastRecipesController.$inject = ['$scope', '$state', '$stateParams', 'APIService',
+  '$ionicPlatform', '$window', '$cordovaGoogleAnalytics'];
 
 export default lastRecipesController;

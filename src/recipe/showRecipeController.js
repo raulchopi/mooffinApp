@@ -1,6 +1,7 @@
 
 function showRecipeController($scope, $stateParams, $ionicHistory,
-  APIService, UserService, $cordovaToast, $localStorage) {
+  APIService, UserService, $cordovaToast, $localStorage,
+  $ionicPlatform, $window, $cordovaGoogleAnalytics) {
 
   $scope.recipe = {};
   $scope.loading = false;
@@ -9,6 +10,12 @@ function showRecipeController($scope, $stateParams, $ionicHistory,
   if(UserService.isUserLogged()) {
     userLikeRecipe();
   }
+
+  $ionicPlatform.ready(function() {
+    if($window.cordova && $window.analytics) {
+      $cordovaGoogleAnalytics.trackView('Show recipe');
+    }
+  });
 
   getRecipe();
 
@@ -81,6 +88,7 @@ function showRecipeController($scope, $stateParams, $ionicHistory,
 };
 
 showRecipeController.$inject = ['$scope', '$stateParams', '$ionicHistory',
-'APIService', 'UserService', '$cordovaToast', '$localStorage'];
+  'APIService', 'UserService', '$cordovaToast', '$localStorage',
+  '$ionicPlatform', '$window', '$cordovaGoogleAnalytics'];
 
 export default showRecipeController;

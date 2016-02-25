@@ -1,8 +1,15 @@
-function userRecipesController($scope, $state, $stateParams, APIService, UserService) {
+function userRecipesController($scope, $state, $stateParams, APIService, UserService,
+  $ionicPlatform, $window, $cordovaGoogleAnalytics) {
 
   $scope.navTitle = 'Mis recetas';
   $scope.userRecipes = [];
   $scope.loading = false;
+
+  $ionicPlatform.ready(function() {
+    if($window.cordova && $window.analytics) {
+      $cordovaGoogleAnalytics.trackView('User recipes');
+    }
+  });
 
   getUserFavsRecipes();
 
@@ -26,6 +33,7 @@ function userRecipesController($scope, $state, $stateParams, APIService, UserSer
   }
 };
 
-userRecipesController.$inject = ['$scope', '$state', '$stateParams', 'APIService', 'UserService'];
+userRecipesController.$inject = ['$scope', '$state', '$stateParams', 'APIService',
+'UserService', '$ionicPlatform', '$window', '$cordovaGoogleAnalytics'];
 
 export default userRecipesController;
