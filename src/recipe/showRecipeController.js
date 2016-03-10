@@ -1,7 +1,7 @@
 
 function showRecipeController($scope, $stateParams, $ionicHistory,
-  APIService, UserService, $cordovaToast, $localStorage,
-  $ionicPlatform, $window, $cordovaGoogleAnalytics) {
+  APIService, UserService, $cordovaToast, $localStorage, $ionicPopover,
+  $ionicPlatform, $window, $cordovaGoogleAnalytics, $cordovaSocialSharing) {
 
   $scope.recipe = {};
   $scope.loading = false;
@@ -15,6 +15,12 @@ function showRecipeController($scope, $stateParams, $ionicHistory,
     if($window.cordova && $window.analytics) {
       $cordovaGoogleAnalytics.trackView('Show recipe');
     }
+  });
+
+  $ionicPopover.fromTemplateUrl('./shared/popover-social.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
   });
 
   getRecipe();
@@ -81,6 +87,39 @@ function showRecipeController($scope, $stateParams, $ionicHistory,
     });
   };
 
+  $scope.shareFacebook = function shareFacebook() {
+    var message = $scope.recipe.titulo;
+    var image =  'http://www.mooffin.es' + $scope.recipe.image;
+    var link = 'http://www.mooffin.es/receta/' + $scope.recipe.slug;
+    $cordovaSocialSharing.shareViaFacebook(message, image, link)
+    .then(function(result) {
+    }, function(err) {
+        console.error(err || "Undefined error");
+    });
+  }
+
+  $scope.shareTwitter = function shareTwitter() {
+    var message = $scope.recipe.titulo;
+    var image =  'http://www.mooffin.es' + $scope.recipe.image;
+    var link = 'http://www.mooffin.es/receta/' + $scope.recipe.slug;
+    $cordovaSocialSharing.shareViaTwitter(message, image, link)
+    .then(function(result) {
+    }, function(err) {
+        console.error(err || "Undefined error");
+    });
+  }
+
+  $scope.shareWhatsapp = function shareWhatsapp() {
+    var message = $scope.recipe.titulo;
+    var image =  'http://www.mooffin.es' + $scope.recipe.image;
+    var link = "http://www.mooffin.es/receta/" + $scope.recipe.slug;
+    $cordovaSocialSharing.shareViaWhatsApp(message, image, link)
+    .then(function(result) {
+    }, function(err) {
+        console.error(err || "Undefined error");
+    });
+  }
+
   $scope.myGoBack = function myGoBack() {
     $ionicHistory.goBack();
   };
@@ -88,7 +127,7 @@ function showRecipeController($scope, $stateParams, $ionicHistory,
 };
 
 showRecipeController.$inject = ['$scope', '$stateParams', '$ionicHistory',
-  'APIService', 'UserService', '$cordovaToast', '$localStorage',
-  '$ionicPlatform', '$window', '$cordovaGoogleAnalytics'];
+  'APIService', 'UserService', '$cordovaToast', '$localStorage', '$ionicPopover',
+  '$ionicPlatform', '$window', '$cordovaGoogleAnalytics', '$cordovaSocialSharing'];
 
 export default showRecipeController;
